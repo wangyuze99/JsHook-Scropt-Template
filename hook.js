@@ -1,10 +1,10 @@
-import 'frida-il2cpp-bridge'
-import { Mod } from './mod'
+import 'frida-il2cpp-bridge';
+import { Mod } from './mod';
+import { logger } from './logger';
 
 export const hook = () => {
-    console.log('start hook');
+    logger.toast('start hook');
     Il2Cpp.perform(() => {
-        console.log(Mod.var.test);
-        console.log('unity Version: ', Il2Cpp.unityVersion);
+        logger.toast('unity Version: ', Il2Cpp.unityVersion);
     });
-}
+};

@@ -12,9 +12,6 @@
     "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
     "outDir": "./dist" // 指定输出目录
   },
-  "include": [ // 指定 TypeScript 编译器应该包含的文件
-    "index.ts"
-  ],
   "exclude": [ // 指定 TypeScript 编译器应该排除的文件
     "node_modules",
     "**/*.spec.ts"
