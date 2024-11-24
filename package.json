@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
+        "init": "npm install ",
+        "adb-pair": "adb pair 192.168.163.222:41091",
+        "adb-connect": "adb connect 192.168.163.222:42761",
         "build": "frida-compile -S -o dist/build.js -c main.js",
         "build-debug": "frida-compile -o dist/debug.js -w debug.js",
         "frida-gadget": "adb forward tcp:28042 tcp:28042 && adb forward tcp:28043 tcp:28043 && frida -H 127.0.0.1:28042 Gadget -F -l dist/debug.js",
