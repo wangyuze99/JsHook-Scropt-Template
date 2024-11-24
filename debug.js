@@ -1,7 +1,6 @@
-import { Mod } from './mod';
-import { hook } from './hook';
-import { getMenu } from './menu';
-import { logger } from './logger';
+import 'frida-il2cpp-bridge';
+import logger from './logger';
+import game from './game';
 
 
 logger.toast('start hook');

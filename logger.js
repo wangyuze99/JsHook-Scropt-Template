@@ -1,4 +1,4 @@
-export const logger = {
+export default {
     /** 检查当前环境是否是 JsHook */
     isJsHook: typeof crypto != 'undefined',
     /** 获取行号[异常] */
@@ -11,13 +11,13 @@ export const logger = {
     },
     /** 只有在调试时才会输出 */
     debug(message, ...optionalParams) {
-        if (!logger.isJsHook) {
+        if (!this.isJsHook) {
             console.log(message, ...optionalParams);
         }
     },
     /** 打印日志并且弹出弹窗 */
     info(message, ...optionalParams) {
-        if (logger.isJsHook) {
+        if (this.isJsHook) {
             // console.log(`[line ${this.getLine()}]:`, message, ...optionalParams);
             console.log(message, ...optionalParams);
             message = JSON.stringify(message);
@@ -29,7 +29,7 @@ export const logger = {
     },
     /** 显示 Toast 提示 */
     toast(message, ...optionalParams) {
-        if (logger.isJsHook) {
+        if (this.isJsHook) {
             message = JSON.stringify(message);
             optionalParams.forEach(element => {
                 message += ` ${element}`;
@@ -45,7 +45,7 @@ export const logger = {
      * @param {string[]} columns 需要打印的字段,如果为空则打印全部
      */
     table(data, columns = null) {
-        if (logger.isJsHook) return;
+        if (this.isJsHook) return;
         if (!Array.isArray(data) || data.length === 0) {
             console.log("没有可用的数据显示在表格中.");
             return;
