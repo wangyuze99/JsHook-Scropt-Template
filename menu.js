@@ -28,7 +28,7 @@ export const getMenu = () => {
                         },
                         {
                             type: "switch",
-                            title: "秒杀",
+                            title: "自杀",
                             val: Mod.var.switch2,
                             callback: (data) => {
                                 Mod.var.switch2 = data.val;

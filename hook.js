@@ -16,10 +16,6 @@ export const hook = () => {
                 for (let index = 0; index < count; index++) {
                     this.method("DealDamage").invoke(hpLoss);
                 }
-                /* 不是boss直接自杀 */
-                if (this.field('GroupID').value != 99) {
-                    this.method("OnHPZero").invoke(true, true, hpLoss.field('Attacker').value);
-                }
             } else {
                 /* 攻击我就反伤 */
                 for (let index = 0; index < count; index++) {
@@ -28,6 +24,13 @@ export const hook = () => {
                 if (!Mod.var.switch1) {
                     this.method("DealDamage").invoke(hpLoss);
                 }
+            }
+        };
+        /* 怪自杀 */
+        game.assembly().class('GamePlay.PlayerObj').method("UpdateLogic").implementation = function (dt) {
+            this.method("UpdateLogic").invoke(dt);
+            if (Mod.var.switch2 && this.field('GroupID').value != 99 && this.method("get_IsMonster").invoke()) {
+                this.method("OnHPZero").invoke(true, true, this);
             }
         };
     });
