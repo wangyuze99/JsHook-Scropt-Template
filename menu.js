@@ -9,41 +9,31 @@ export const getMenu = () => {
                     title: 'tab1',
                     item: [
                         {
-                            type: 'button',
-                            title: 'Test1',
-                            callback: (data) => {
-                                console.log('这是 tab1 的 Test1');
-                            }
-                        },
-                        {
                             type: 'slider',
-                            title: 'slider1',
+                            title: '倍功',
                             val: Mod.var.slider1,
                             min: 0,
                             max: 100,
                             callback: (data) => {
-                                console.log(`Mod.var.slider1 changed: ${Mod.var.slider1} -> ${data.val}`);
                                 Mod.var.slider1 = parseInt(data.val);
                             }
                         },
                         {
                             type: "switch",
-                            title: "switch1",
+                            title: "无敌",
                             val: Mod.var.switch1,
                             callback: (data) => {
-                                console.log(`Mod.var.switch1 changed: ${Mod.var.switch1} -> ${data.val}`);
                                 Mod.var.switch1 = data.val;
                             }
                         },
                         {
-                            type: 'input',
-                            title: 'Input Test',
-                            val: Mod.var.test,
+                            type: "switch",
+                            title: "秒杀",
+                            val: Mod.var.switch2,
                             callback: (data) => {
-                                console.log(`Mod.var.test changed: ${Mod.var.switch1} -> ${data.val}`);
-                                Mod.var.test = data.val;
+                                Mod.var.switch2 = data.val;
                             }
-                        }
+                        },
                     ]
                 },
                 {

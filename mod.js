@@ -5,8 +5,9 @@ export const Mod = {
     menu: [],
     callbacks: {},
     var: {
-        switch1: false,
-        slider1: 0,
+        switch1: true,
+        switch2: true,
+        slider1: 20,
     },
     /**
      * 初始化模块
