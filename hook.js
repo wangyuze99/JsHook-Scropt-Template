@@ -8,24 +8,21 @@ export const hook = () => {
     Il2Cpp.perform(() => {
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
 
+
+
+        
         /** 受击扣血函数 */
-        game.assembly().class('GamePlay.PlayerObj').method("DealDamage").implementation = function (hpLoss) {
-            const count = Mod.var.slider1;
-            if (this.method("get_IsMonster").invoke()) {
-                /* 重复伤害 */
-                for (let index = 0; index < count; index++) {
-                    this.method("DealDamage").invoke(hpLoss);
-                }
-            } else {
-                /* 攻击我就反伤 */
-                for (let index = 0; index < count; index++) {
-                    hpLoss.field('Attacker').value.method("DealDamage").invoke(hpLoss);
-                }
-                if (!Mod.var.switch1) {
-                    this.method("DealDamage").invoke(hpLoss);
-                }
-            }
-        };
+        game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOther105").implementation = function (charge_val, func_, sub_func_) {
+    if (Mod.var.slider3) {
+        // 使用滑动条的值
+        charge_val = Mod.var.slider1;
+        func_ = Mod.var.slider2;
+        sub_func_ = Mod.var.slider3;
+    }
+    
+    // 调用原方法
+    this.method("chargeByOther105").invoke(charge_val, func_, sub_func_);
+};
         /* 怪自杀 */
         game.assembly().class('GamePlay.PlayerObj').method("UpdateLogic").implementation = function (dt) {
             this.method("UpdateLogic").invoke(dt);
