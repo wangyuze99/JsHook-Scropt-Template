@@ -1,37 +1,79 @@
 import 'frida-il2cpp-bridge';
+
 import { Mod } from './mod';
+
 import logger from './logger';
+
 import game from './game';
 
+
+
 export const hook = () => {
+
     logger.toast('start hook');
+
     Il2Cpp.perform(() => {
+
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
 
+        /** 阻止log */
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateCoinLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateGoldLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLIstLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
+
+
+
         /** 受击扣血函数 */
-        game.assembly().class('GamePlay.PlayerObj').method("DealDamage").implementation = function (hpLoss) {
-            const count = Mod.var.slider1;
-            if (this.method("get_IsMonster").invoke()) {
-                /* 重复伤害 */
-                for (let index = 0; index < count; index++) {
-                    this.method("DealDamage").invoke(hpLoss);
-                }
-            } else {
-                /* 攻击我就反伤 */
-                for (let index = 0; index < count; index++) {
-                    hpLoss.field('Attacker').value.method("DealDamage").invoke(hpLoss);
-                }
-                if (!Mod.var.switch1) {
-                    this.method("DealDamage").invoke(hpLoss);
-                }
-            }
+
+        game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOther105").implementation = function (charge_val, func_, sub_func_) {
+
+            const charge_val = Mod.var.slider1;
+
+            const func_ = Mod.var.slider2;
+
+            const sub_func_ = Mod.var.slider3;
+
+            if (Mod.var.slider3) {
+
+                /*  */
+
+                
+
+                    this.method("chargeByOther105").invoke(charge_val, func_,  sub_func_);
+
+                
+
+            } 
+
         };
+
         /* 怪自杀 */
-        game.assembly().class('GamePlay.PlayerObj').method("UpdateLogic").implementation = function (dt) {
-            this.method("UpdateLogic").invoke(dt);
-            if (Mod.var.switch2 && this.field('GroupID').value != 99 && this.method("get_IsMonster").invoke()) {
-                this.method("OnHPZero").invoke(true, true, this);
+
+        game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val , damageType, damageObj) {
+
+            this.method("changeHp").invoke(val, damageType);
+
+            if (Mod.var.switch2) {
+
+                this.method("changeHp").invoke(99999999, 0 );
+
             }
+
         };
+
     });
+
 };
