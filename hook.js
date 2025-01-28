@@ -17,6 +17,7 @@ export const hook = () => {
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
 
         /** 阻止log */
+        function preventLog() {
 
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
 
@@ -33,7 +34,7 @@ export const hook = () => {
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
 
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
-
+        }
 
 
         /** 受击扣血函数 */
@@ -62,7 +63,7 @@ export const hook = () => {
 
         /* 怪自杀 */
 
-        game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val , damageType, damageObj) {
+      /*  game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val , damageType, damageObj) {
 
             this.method("changeHp").invoke(val, damageType);
 
@@ -72,7 +73,7 @@ export const hook = () => {
 
             }
 
-        };
+        };*/
 
     });
 
