@@ -31,9 +31,9 @@ exports.call = {
         /** 受击扣血函数 */
         game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOther105").implementation = function (charge_val, func_, sub_func_) {
             this.method("chargeByOther105").invoke(charge_val, func_, sub_func_)
-            if (chage_val == 6){
-            logger.toast("执行失败")
-            }
+            //if (chage_val == 6){
+            //logger.toast("执行失败")
+         //   }
             }
         },
   /*      
@@ -43,5 +43,5 @@ exports.call = {
                 this.method("OnHPZero").invoke(true, true, this);
             }
         };*/
-    
+},
 };
