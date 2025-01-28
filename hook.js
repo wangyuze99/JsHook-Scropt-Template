@@ -8,7 +8,21 @@ export const hook = () => {
     Il2Cpp.perform(() => {
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
 
+game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
 
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateCoinLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateGoldLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLIstLog").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
+
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
 
         
         /** 受击扣血函数 */
