@@ -7,7 +7,7 @@ export const hook = () => {
     logger.toast('start hook');
     Il2Cpp.perform(() => {
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
-        function prevenlog() {
+        
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
 
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateLog").implementation = function () { };
@@ -21,7 +21,7 @@ export const hook = () => {
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLIstLog").implementation = function () { };
 
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
-        }
+        
 
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
 
