@@ -43,5 +43,5 @@ exports.call = {
                 this.method("OnHPZero").invoke(true, true, this);
             }
         };*/
-    },
+    
 };
