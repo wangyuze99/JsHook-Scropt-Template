@@ -40,25 +40,15 @@ export const hook = () => {
         /** 受击扣血函数 */
 
         game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOther105").implementation = function (charge_val, func_, sub_func_) {
-
-            const charge_val = Mod.var.slider1;
-
-            const func_ = Mod.var.slider2;
-
-            const sub_func_ = Mod.var.slider3;
-
-            if (Mod.var.slider3) {
-
-                /*  */
-
-                
-
-                    this.method("chargeByOther105").invoke(charge_val, func_,  sub_func_);
-
-                
-
-            } 
-
+    if (Mod.var.slider3) {
+        // 使用滑动条的值
+        charge_val = Mod.var.slider1;
+        func_ = Mod.var.slider2;
+        sub_func_ = Mod.var.slider3;
+    }
+    
+    // 调用原方法
+    this.method("chargeByOther105").invoke(charge_val, func_, sub_func_);
         };
 
         /* 怪自杀 */
