@@ -33,7 +33,7 @@ export const getMenu = () => {
                        title: "金额"
                        val: "6"
                        callback: (data) => {
-                       hook.call.充值.charge(e.val, 2, 1)
+                       hook.call.充值.charge(data.val, 2, 1)
                        }
                     }
                     },
