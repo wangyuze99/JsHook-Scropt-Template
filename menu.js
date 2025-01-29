@@ -39,8 +39,9 @@ export const getMenu = () => {
                                 Il2Cpp.perform((() => {
                                 game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOhter105").implementation = function(charge_val, func_, sub_func_);
                                this.method("chargeByOhter105").invoke(data.val, 2, sub_func_);
-                            }
-                        }
+                            
+    });
+}
                         },
                         {
                             type: "switch",
