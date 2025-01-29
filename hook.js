@@ -24,6 +24,7 @@ export const hook = () => {
                     // 重写 "chargeByOther105" 方法
                     chargeByOther105: function (charge_val, func_, sub_func_) {
                         this.method("chargeByOther105").invoke(charge_val, func_, sub_func_);
+                        logger.toast("arg:","charge_val");
                     }
                 }
             }
