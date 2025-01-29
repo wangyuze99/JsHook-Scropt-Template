@@ -19,15 +19,18 @@ export const hook = () => {
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
 
         exports.call = {
-            充值: {
-                charge: {
-                    // 重写 "chargeByOther105" 方法
-                    chargeByOther105: function (charge_val, func_, sub_func_) {
-                        this.method("chargeByOther105").invoke(charge_val, func_, sub_func_);
-                        logger.toast("arg:","charge_val");
-                    }
-                }
-            }
-        };
-    });
+      "充值": {
+        charge: function(amount, type, source) {
+          const targetClass = Il2Cpp.domain.assembly("Assembly-CSharp").image.class("QianYi.Game.Hero.MyHttpUtil");
+          const method = targetClass.method("chargeByOther105");
+          if (method) {
+            method.invoke(amount, type, source);
+            a.default.toast(`成功充值: ${amount}`);
+          } else {
+            console.error("方法chargeByOther105不存在");
+          }
+        }
+      }
+    };
+  });
 };
