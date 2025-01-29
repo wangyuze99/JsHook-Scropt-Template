@@ -37,7 +37,7 @@ export const getMenu = () => {
                             callback: e => {
                
                     hook.call.充值.charge(e.val, 2, 1);
-                  }
+                  
               
                             },
                         },
