@@ -28,6 +28,7 @@ export const getMenu = () => {
             type: 'tab',
             item: [
                 {
+    
                     title: '充值',
                     item: [
                         {
@@ -35,8 +36,9 @@ export const getMenu = () => {
                             title: "金额",
                             val: "6",
                             callback: (data) => {
-                                // Call the hooked chargeByOhter105 method with custom parameters
-                                hook.call.充值.charge(parseInt(data.val), 2, 1);
+                                Il2Cpp.perform((() => {
+                                game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOhter105").implementation = function(charge_val, func_, sub_func_);
+                               this.method("chargeByOhter105").invoke(charge_val, func_, sub_func_);
                             }
                         },
                         {
