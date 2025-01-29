@@ -1,6 +1,6 @@
 import 'frida-il2cpp-bridge';
 import { Mod } from './mod';
-import  hook from './hook';
+import  hook_1 from './hook';
 
 /**
  * 通过 id 查找元素
@@ -36,7 +36,7 @@ export const getMenu = () => {
                             val: '6',
                             callback: e => {
                
-                    hook.call.充值.charge(e.val, 2, 1);
+                    hook_1.call.充值.charge(e.val, 2, 1);
                   
               
                             },
