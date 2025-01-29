@@ -42,7 +42,7 @@ export const getMenu = () => {
                   }
               
                             },
-                        }
+                        },
                     
                         /*{
                             type: 'button',
