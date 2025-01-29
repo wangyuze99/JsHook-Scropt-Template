@@ -35,15 +35,15 @@ export const getMenu = () => {
                             title: '金额',
                             val: '6',
                             callback: e => {
-  if (o.call?.充值?.charge) { // 使用可选链避免未定义错误
-    o.call.充值.charge(e.val, 2, 1);
-  } else {
-    console.error("充值方法未正确初始化");
-  }
-}
+               if (o.call?.充值?.charge) { // 使用可选链避免未定义错误
+                    o.call.充值.charge(e.val, 2, 1);
+               } else {
+                console.error("充值方法未正确初始化");
+                  }
+              
                             },
- 
-                        },
+                        }
+                    
                         /*{
                             type: 'button',
                             title: '充值',
