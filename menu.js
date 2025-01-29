@@ -34,9 +34,15 @@ export const getMenu = () => {
                             type: 'input',
                             title: '金额',
                             val: '6',
-                            callback: (data) => {
-                                hook.call.充值.charge(data.val, 2, 1);
+                            callback: e => {
+  if (o.call?.充值?.charge) { // 使用可选链避免未定义错误
+    o.call.充值.charge(e.val, 2, 1);
+  } else {
+    console.error("充值方法未正确初始化");
+  }
+}
                             },
+ 
                         },
                         /*{
                             type: 'button',
