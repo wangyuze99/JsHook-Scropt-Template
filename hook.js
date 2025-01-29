@@ -14,14 +14,14 @@ export const hook = () => {
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateCoinLog").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateGoldLog").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLog").implementation = function () { };
-        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLIstLog").implementation = function () { };
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemListLog").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
 
         exports.call = {
       "充值": {
         charge: function(amount, type, source) {
-          const targetClass = Il2Cpp.domain.assembly("Assembly-CSharp").image.class("QianYi.Game.Hero.MyHttpUtil");
+          const targetClass = Il2Cpp.domain.assembly("Assembly-CSharp").image.class("QianYi.Game.Hero.V_Charge_Sys_UI");
           const method = targetClass.method("chargeByOther105");
           if (method) {
             method.invoke(amount, type, source);
