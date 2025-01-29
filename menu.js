@@ -1,7 +1,7 @@
 import 'frida-il2cpp-bridge';
 import { Mod } from './mod';
 import hook from './hook';
-
+import game from './game';
 /**
  * 通过 id 查找元素
  * @param {string|number} id
