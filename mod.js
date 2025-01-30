@@ -7,6 +7,7 @@ export const Mod = {
     var: {
         switch1: true,
         switch2: true,
+        switch3: true,
         slider1: 20,
     },
     /**
