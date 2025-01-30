@@ -19,9 +19,9 @@ export const hook = () => {
 
         /** charge */
         game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOhter105").implementation = function (charge_val, func_, sub_func_) {
-            const instance = choose(game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI'));
+            const instance = Il2cpp.gc.choose(game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI'));
             if (Mod.var.switch3) {
-                this.method("chargeByOhter105").invoke(instance[0], 6, 2, Il2Cpp.string("test"));
+                this.method("chargeByOhter105").invoke(instance[0], 6, 2, "test");
             } else {
                 this.method("chargeByOhter105").invoke(instance[0], charge_val, func_, sub_func_);
             }
