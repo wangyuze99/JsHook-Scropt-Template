@@ -1,4 +1,4 @@
-import 'frida-il2cpp-bridge';
+import Il2cpp from 'frida-il2cpp-bridge';
 import { Mod } from './mod';
 import logger from './logger';
 import game from './game';
