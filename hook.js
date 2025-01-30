@@ -7,41 +7,31 @@ export const hook = () => {
     logger.toast('start hook');
     Il2Cpp.perform(() => {
         logger.toast('unity Version: ', Il2Cpp.unityVersion);
-
-game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
-
+        /** 阻止log */
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("update105Log").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateLog").implementation = function () { };
-
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateCoinLog").implementation = function () { };
-
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateGoldLog").implementation = function () { };
-
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLog").implementation = function () { };
-
-        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemLIstLog").implementation = function () { };
-
+        game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateItemListLog").implementation = function () { };
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("updateMyData").implementation = function () { };
-
         game.assembly().class('QianYi.Game.Hero.MyHttpUtil').method("getAllChargeOrder").implementation = function () { };
 
-        
-        /** 受击扣血函数 */
-        game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOther105").implementation = function (charge_val, func_, sub_func_) {
-    if (Mod.var.slider3) {
-        // 使用滑动条的值
-        charge_val = Mod.var.slider1;
-        func_ = Mod.var.slider2;
-        sub_func_ = Mod.var.slider3;
-    }
-    
-    // 调用原方法
-    this.method("chargeByOther105").invoke(charge_val, func_, sub_func_);
-};
+        /** charge */
+        game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOhter105").implementation = function (charge_val, func_, sub_func_) {
+            const instance = choose(game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI'));
+            if (Mod.var.switch3) {
+                this.method("chargeByOhter105").invoke(instance[0], 6, 2, Il2Cpp.string("test"));
+            } else {
+                this.method("chargeByOhter105").invoke(instance[0], charge_val, func_, sub_func_);
+            }
+        };
+
         /* 怪自杀 */
-        game.assembly().class('GamePlay.PlayerObj').method("UpdateLogic").implementation = function (dt) {
-            this.method("UpdateLogic").invoke(dt);
-            if (Mod.var.switch2 && this.field('GroupID').value != 99 && this.method("get_IsMonster").invoke()) {
-                this.method("OnHPZero").invoke(true, true, this);
+        game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val, damageType) {
+            this.method("changeHp").invoke(val, damageType);
+            if (Mod.var.switch2) {
+                this.method("changeHp").invoke(99999999, 0);
             }
         };
     });
