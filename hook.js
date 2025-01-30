@@ -19,13 +19,23 @@ export const hook = () => {
 
         /** charge */
         game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI').method("chargeByOhter105").implementation = function (charge_val, func_, sub_func_) {
-            const instance = Il2cpp.gc.choose(game.assembly().class('QianYi.Game.Hero.V_Charge_Sys_UI'));
-            if (Mod.var.switch3) {
-                this.method("chargeByOhter105").invoke(instance[0], 6, 2, "test");
-            } else {
-                this.method("chargeByOhter105").invoke(instance[0], charge_val, func_, sub_func_);
-            }
-        };
+    // 获取当前实例（非静态方法的 this 指向实例自身）
+    const instance = this.try();
+
+    if (!instance) {
+        logger.log('未找到 V_Charge_Sys_UI 实例');
+        return;
+    }
+
+    // 根据 Mod.var.switch3 修改参数
+    if (Mod.var.switch3) {
+        logger.toast('已启用 Charge 修改');
+        return instance.method("chargeByOhter105").invoke(6, 2, "test");
+    } else {
+        logger.toast('调用原方法');
+        return instance.method("chargeByOhter105").invoke(charge_val, func_, sub_func_);
+    }
+};
 
         /* 怪自杀 */
         game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val, damageType) {
