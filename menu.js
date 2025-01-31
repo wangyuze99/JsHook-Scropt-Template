@@ -35,7 +35,7 @@ export const getMenu = () => {
                        callback: (data) => {
                        hook.call.充值.charge.getSeasonInfo()
                        }
-                    }
+                    
                     },
       /**                  {
                             type: 'button',
