@@ -4,49 +4,41 @@ import logger from './logger';
 import game from './game';
 
 export const hook = () => {
-    logger.toast('开始 Hook');
+    logger.toast('start hook');
     Il2Cpp.perform(() => {
-        logger.toast('Unity 版本: ' + Il2Cpp.unityVersion);
-
-        // 获取目标类和方法
-        const targetClass = Il2Cpp.Domain.assembly("Assembly-CSharp").image.class("QianYi.Game.Hero.V_Charge_Sys_UI");
-        const targetMethod = targetClass.method("chargeByOhter105");
-
-        // 检查方法是否存在
-        if (!targetMethod) {
-            logger.info('未找到 chargeByOhter105 方法');
-            return;
-        }
-
-        // 打印方法信息
-        logger.info('方法参数数量:', targetMethod.parameterCount);
-        logger.info('方法参数类型:', targetMethod.parameters.map(p => p.type.name).join(', '));
-        logger.info('方法返回类型:', targetMethod.returnType.name);
+        logger.toast('unity Version: ', Il2Cpp.unityVersion);
 
         // Hook 方法
-        targetMethod.implementation = function (charge_val, func_, sub_func_) {
-            // 获取当前实例
-            const instance = this.try();
-            if (!instance) {
-                logger.info('未找到 V_Charge_Sys_UI 实例');
-                return;
-            }
+        const className = 'QianYi.Game.Hero.MyHttpUtil';
+        const classRef = game.assembly().class(className);
 
-            // 根据 Mod.var.switch3 修改参数
-            if (Mod.var.switch3) {
-                logger.info('已启用 Charge 修改');
-                return instance.method("chargeByOhter105").invoke(6, 2, "test");
-            } else {
-                logger.info('调用原方法');
-                return instance.method("chargeByOhter105").invoke(charge_val, func_, sub_func_);
-            }
-        };
+        const methodsToHook = [
+            'update105Log',
+            'updateLog',
+            'updateCoinLog',
+            'updateGoldLog',
+            'updateItemLog',
+            'updateItemListLog',
+            'updateMyData',
+            'getAllChargeOrder'
+        ];
 
-        /* 怪自杀 */
-        game.assembly().class('QianYi.Game.Hero.MonsterObj').method("changeHp").implementation = function (val, damageType) {
-            this.method("changeHp").invoke(val, damageType);
-            if (Mod.var.switch2) {
-                this.method("changeHp").invoke(99999999, 0);
+        methodsToHook.forEach(methodName => {
+            const method = classRef.method(methodName);
+            method.implementation = function () { };
+        });
+
+        // 特殊方法处理
+        const call = {
+            充值: {
+                charge: {
+                    getSeasonInfo: () => {
+                        const method = classRef.method('getSeasonInfo');
+                        method.implementation = function () {
+                            this.method('getSeasonInfo').invoke(this);
+                        };
+                    }
+                }
             }
         };
     });
