@@ -1,41 +1,49 @@
 import 'frida-il2cpp-bridge'
 import { Mod } from './mod'
+import hook from './hook'
+/**
+ *  通过 id 查找元素
+ * @param {string|number} id
+ * @returns {MenuItem}
+ */
+function findById(id) {
+    return findItem((e) => e.id == id);
+}
+exports.findById = findById;
+/**
+ *  通过 title 查找元素
+ * @param {string} title
+ * @returns {MenuItem}
+ */
+function findByTitle(title) {
+    return findItem((e) => e.title == title);
+}
+exports.findByTitle = findByTitle;
+
 export const getMenu = () => {
     return [
         {
             type: 'tab',
             item: [
                 {
-                    title: 'tab1',
+                    title: '充值',
                     item: [
-                        {
-                            type: 'switch',
-                            title: '6',
-                            val: Mod.var.switch3,
+                    {
+                       type: "button"
+                       title: "赛季"
+                       
+                       callback: (data) => {
+                       hook.call.充值.charge.getSeasonInfo()
+                       }
+                    }
+                    },
+      /**                  {
+                            type: 'button',
+                            title: '充值',
                             callback: (data) => {
-                                Mod.var.switch3 = data.val;
+                            hook.call.data.充值.charge(parseInt())         ;
                             }
-                        },
-                        {
-                            type: 'slider',
-                            title: 'funcval',
-                            val: Mod.var.slider2,
-                            min: 2,
-                            max: 20,
-                            callback: (data) => {
-                                Mod.var.slider2 = parseInt(data.val);
-                            }
-                        },
-                        {
-                            type: 'slider',
-                            title: 'subfuncval',
-                            val: Mod.var.slider3,
-                            min: 0,
-                            max: 100,
-                            callback: (data) => {
-                                Mod.var.slider3 = parseInt(data.val);
-                            }
-                        },
+                        },**/
                         {
                             type: "switch",
                             title: "无敌",
