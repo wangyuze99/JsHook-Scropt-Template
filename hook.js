@@ -44,11 +44,13 @@ export const hook = () => {
                 }
             }
            账户: {
-              openTestAccount:() => {
+            test: {
+                openTestAccount:() => {
                   const method = classRef1.method('openTestAccount');
                   method.implementation = function () {
                         this.method('openTestAccount').invoke(this);                    
-                  };               
+                  };
+                }
             }
           }
         };
