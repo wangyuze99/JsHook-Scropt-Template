@@ -42,7 +42,7 @@ export const hook = () => {
                         };
                     }
                 }
-            }
+            },
            账户: {
             test: {
                 openTestAccount:() => {
