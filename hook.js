@@ -11,6 +11,9 @@ export const hook = () => {
         // Hook 方法
         const className = 'QianYi.Game.Hero.MyHttpUtil';
         const classRef = game.assembly().class(className);
+        const className1 = 'QianYi.Game.Hero.MainGame_1';
+        const classsRef1 = game.assembly().class(className1)
+        
 
         const methodsToHook = [
             'update105Log',
@@ -34,12 +37,20 @@ export const hook = () => {
                 charge: {
                     getSeasonInfo: () => {
                         const method = classRef.method('getSeasonInfo');
-                        method.implementation = function () {
-                            this.method('getSeasonInfo').invoke(this);
+                        method.implementation = function (isTwice) {
+                            this.method('getSeasonInfo').invoke(this,true);
                         };
                     }
                 }
             }
+           账户: {
+              openTestAccount:() => {
+                  const method = classRef1.method('openTestAccount');
+                  method.implementation = function () {
+                        this.method('openTestAccount').invoke(this);                    
+                  };               
+            }
+          }
         };
     });
 };
