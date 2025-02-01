@@ -29,8 +29,8 @@ export const getMenu = () => {
                     title: '充值',
                     item: [
                     {
-                       type: "button",
-                       title: "赛季",
+                       type: 'button',
+                       title: '赛季',
                        callback: (data) => {
                        hook.call.充值.charge.getSeasonInfo(true)；
                     
