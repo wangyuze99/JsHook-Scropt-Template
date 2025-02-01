@@ -29,9 +29,8 @@ export const getMenu = () => {
                     title: '充值',
                     item: [
                     {
-                       type: "button"
-                       title: "赛季"
-                       
+                       type: "button",
+                       title: "赛季",
                        callback: (data) => {
                        hook.call.充值.charge.getSeasonInfo(true)；
                     
@@ -42,7 +41,7 @@ export const getMenu = () => {
                             type: 'button',
                             title: 'test',
                             callback: (data) => {
-                            hook.call.账户.test.openTestAccount()         ;
+                            hook.call.账户.test.openTestAccount();
                             }
                         },
                         {
