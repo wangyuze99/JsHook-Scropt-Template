@@ -33,17 +33,18 @@ export const getMenu = () => {
                        title: "赛季"
                        
                        callback: (data) => {
-                       hook.call.充值.charge.getSeasonInfo()
+                       hook.call.充值.charge.getSeasonInfo(true)；
+                    
                        }
                     
                     },
-      /**                  {
+                      {
                             type: 'button',
-                            title: '充值',
+                            title: 'test',
                             callback: (data) => {
-                            hook.call.data.充值.charge(parseInt())         ;
+                            hook.call.账户.test.openTestAccount()         ;
                             }
-                        },**/
+                        },
                         {
                             type: "switch",
                             title: "无敌",
