@@ -32,7 +32,7 @@ export const getMenu = () => {
                        type: 'button',
                        title: '赛季',
                        callback: (data) => {
-                       hook.call.充值.charge.getSeasonInfo(true)；
+                       hook.call.充值.charge.getSeasonInfo(true);
                     
                        }
                     
